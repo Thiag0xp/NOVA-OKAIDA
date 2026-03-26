@@ -343,6 +343,79 @@
       font-size: 1rem;
     }
 
+    .tabela-materiais {
+      background: linear-gradient(180deg, rgba(120, 8, 16, 0.25), rgba(20, 6, 8, 0.92));
+      border: 1px solid rgba(214,40,57,0.35);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: 0 0 0 1px rgba(214,40,57,0.12), 0 0 28px rgba(214,40,57,0.18), 0 20px 50px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+
+    .tabela-materiais table {
+      width: 100%;
+      border-collapse: collapse;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+        #0b0b10;
+      background-size: 100% 42px, 120px 100%, auto;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(214,40,57,0.28);
+    }
+
+    .tabela-materiais th {
+      background: linear-gradient(180deg, #b41624, #7f111b);
+      padding: 16px 14px;
+      text-align: left;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .tabela-materiais td {
+      padding: 14px;
+      border-top: 1px solid rgba(214,40,57,0.12);
+      border-right: 1px solid rgba(214,40,57,0.12);
+      color: #e7e7ee;
+    }
+
+    .tabela-materiais td:last-child,
+    .tabela-materiais th:last-child {
+      border-right: none;
+    }
+
+    .tabela-materiais tr:hover {
+      background: rgba(214,40,57,0.08);
+    }
+
+    #precos {
+      display: none;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    #precos.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      animation: abrirTabela 0.5s ease;
+    }
+
+    @keyframes abrirTabela {
+      from {
+        opacity: 0;
+        transform: translateY(36px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     .faq {
       display: grid;
       gap: 14px;
@@ -542,6 +615,8 @@
         padding-top: 56px;
       }
     }
+  
+    
   </style>
 </head>
 <body>
@@ -560,7 +635,9 @@
         <a href="#valores">Valores</a>
         <a href="#processo">Ingresso</a>
         <a href="#faq">FAQ</a>
+        <a href="#precos">Tabela de preços</a>
         <a href="#galeria">Galeria</a>
+        
       </nav>
 
       <a class="btn btn-primary" href="https://discord.gg/WhcgtYDVj7" target="_blank" rel="noopener noreferrer">Entrar na família</a>
@@ -580,6 +657,7 @@
           </p>
 
           <div class="hero-actions">
+            
             <a href="https://discord.gg/WhcgtYDVj7" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Quero me alistar</a>
             <a href="#sobre" class="btn btn-outline">Conhecer a organização</a>
           </div>
@@ -628,28 +706,28 @@
           </p>
         </div>
 
-        <div class="cards">
-          <div class="card">
-            <div class="icon">⚔️</div>
-            <h3>Estrutura Forte</h3>
-            <p>
-              Hierarquia organizada, funções bem definidas e processos claros para manter o grupo alinhado.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon">🎌</div>
-            <h3>Identidade Própria</h3>
-            <p>
-              Visual marcante, comunicação padronizada e uma cultura interna que fortalece a presença no servidor.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon">📻</div>
-            <h3>Coordenação em Campo</h3>
-            <p>
-              Organização em operações, convocações e ações coletivas com foco em eficiência e imersão.
-            </p>
-          </div>
+        <div class="tabela-materiais">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Preço</th>
+                <th>Com parceria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SG (Okaida Custom)</td><td>300.000</td><td>240.000</td></tr>
+              <tr><td>Glock (Okaida Edition)</td><td>60.000</td><td>48.000</td></tr>
+              <tr><td>UZI (Okaida Tactical)</td><td>180.000</td><td>140.000</td></tr>
+              <tr><td>Shotgun (Okaida Breacher)</td><td>200.000</td><td>160.000</td></tr>
+              <tr><td>Lockpick</td><td>7.000</td><td>5.500</td></tr>
+              <tr><td>Algema</td><td>5.500</td><td>4.500</td></tr>
+              <tr><td>Colete</td><td>15.000</td><td>12.000</td></tr>
+              <tr><td>Caixa ATCS</td><td>10.000</td><td>7.850</td></tr>
+              <tr><td>Tablet de corrida</td><td>25.000</td><td>22.500</td></tr>
+              <tr><td>Ticket de corrida</td><td>15.000</td><td>13.500</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -745,6 +823,67 @@
       </div>
     </section>
 
+    
+
+    <section id="topico">
+      <div class="container">
+        <div class="section-head">
+          <span>Operações</span>
+          <h2>Atuação da NOVA OKAIDA</h2>
+          <p>Conheça como a organização atua dentro da cidade e mantém seu domínio.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>🚨 Controle de território</h3>
+            <p>A NOVA OKAIDA mantém presença ativa em áreas estratégicas, garantindo respeito e domínio.</p>
+          </div>
+          <div class="card">
+            <h3>📻 Comunicação</h3>
+            <p>Uso de rádio e coordenação constante para manter organização durante ações.</p>
+          </div>
+          <div class="card">
+            <h3>⚔️ Operações</h3>
+            <p>Ações planejadas com estratégia, disciplina e trabalho em equipe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="precos">
+      <div class="container">
+        <div class="section-head">
+          <span>Tabela oficial</span>
+          <h2>Tabela de preços</h2>
+          <p>Confira os valores atualizados da NOVA OKAIDA.</p>
+        </div>
+
+        <div class="tabela-materiais">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Preço</th>
+                <th>Com parceria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SG (Okaida Custom)</td><td>300.000</td><td>240.000</td></tr>
+              <tr><td>Glock (Okaida Edition)</td><td>60.000</td><td>48.000</td></tr>
+              <tr><td>UZI (Okaida Tactical)</td><td>180.000</td><td>140.000</td></tr>
+              <tr><td>Shotgun (Okaida Breacher)</td><td>200.000</td><td>160.000</td></tr>
+              <tr><td>Lockpick</td><td>7.000</td><td>5.500</td></tr>
+              <tr><td>Algema</td><td>5.500</td><td>4.500</td></tr>
+              <tr><td>Colete</td><td>15.000</td><td>12.000</td></tr>
+              <tr><td>Caixa ATCS</td><td>10.000</td><td>7.850</td></tr>
+              <tr><td>Tablet de corrida</td><td>25.000</td><td>22.500</td></tr>
+              <tr><td>Ticket de corrida</td><td>15.000</td><td>13.500</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <section id="galeria">
       <div class="container">
         <div class="section-head">
@@ -757,7 +896,6 @@
           <div class="gallery-item" data-image="fotos/01.png"><img src="fotos/01.png" alt="Foto 1"></div>
           <div class="gallery-item" data-image="fotos/02.png"><img src="fotos/02.png" alt="Foto 2"></div>
           <div class="gallery-item" data-image="fotos/03.png"><img src="fotos/03.png" alt="Foto 3"></div>
-         
         </div>
       </div>
     </section>
@@ -794,54 +932,34 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      const lightboxClose = document.getElementById('lightboxClose');
+  document.addEventListener('DOMContentLoaded', function () {
+    const linksPrecos = document.querySelectorAll('a[href="#precos"]');
+    const secPrecos = document.getElementById('precos');
 
-      function abrirLightbox(src, alt) {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || 'Imagem ampliada';
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function fecharLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+    linksPrecos.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!secPrecos) return;
+        secPrecos.style.display = 'block';
+        secPrecos.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(function () {
-          lightboxImg.src = '';
-        }, 250);
-      }
-
-      galleryItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-          const img = item.querySelector('img');
-          const src = item.getAttribute('data-image') || (img ? img.getAttribute('src') : '');
-          const alt = img ? img.getAttribute('alt') : 'Imagem ampliada';
-          if (src) abrirLightbox(src, alt);
-        });
-      });
-
-      if (lightboxClose) {
-        lightboxClose.addEventListener('click', fecharLightbox);
-      }
-
-      if (lightbox) {
-        lightbox.addEventListener('click', function (e) {
-          if (e.target === lightbox) {
-            fecharLightbox();
-          }
-        });
-      }
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-          fecharLightbox();
-        }
+          secPrecos.classList.add('show');
+        }, 300);
       });
     });
-  </script>
+  });
+</script>
+<script>
+  const linkPrecos = document.querySelectorAll('a[href="#precos"]');
+  const secPrecos = document.getElementById('precos');
+
+  linkPrecos.forEach(link => {
+    link.addEventListener('click', () => {
+      if (secPrecos) {
+        secPrecos.style.display = 'block';
+      }
+    });
+  });
+</script>
 </body>
 </html>
