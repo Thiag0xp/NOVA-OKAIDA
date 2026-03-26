@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVA OKAIDA | Grupo RP</title>
+  <link rel="icon" type="image/png" href="fotos/welcome-removebg-preview.png" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #12121a;
+      --panel-2: #1a1a25;
+      --text: #f5f5f7;
+      --muted: #b5b5c3;
+      --red: #d62839;
+      --red-2: #a41623;
+      --line: rgba(255,255,255,0.08);
+      --gold: #d8b46a;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, rgba(214,40,57,0.18), transparent 30%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      background: #111;
+      flex-shrink: 0;
+    }
+
+    .logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(216,180,106,0.28);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(216,180,106,0.08);
+      font-size: 0.85rem;
+      letter-spacing: 0.6px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .stat h3 {
+      font-size: 1.7rem;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .stat p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(214,40,57,0.34), transparent 70%);
+    }
+
+    .card-tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(214,40,57,0.12);
+      color: #ff8791;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+      border: 1px solid rgba(214,40,57,0.2);
+    }
+
+    .hero-card h2 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .hero-card li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .section-head span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.82rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      margin: 10px 0 12px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(214,40,57,0.3);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(214,40,57,0.1);
+      color: var(--red);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      align-items: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .timeline-item strong {
+      color: var(--red);
+      font-size: 1rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, rgba(214,40,57,0.12), rgba(164,22,35,0.1));
+      border: 1px solid rgba(214,40,57,0.18);
+      border-radius: 28px;
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta h3 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: #e2d7d7;
+      max-width: 650px;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      margin-top: 36px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        <div class="logo-badge"><img src="fotos/welcome-removebg-preview.png" alt="Logo NOVA OKAIDA"></div>
+        <div>
+          <div>NOVA OKAIDA</div>
+          <small style="color: var(--muted); font-weight: 500;">Grupo Roleplay</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#valores">Valores</a>
+        <a href="#processo">Ingresso</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn btn-primary" href="https://discord.gg/WhcgtYDVj7" target="_blank" rel="noopener noreferrer">Entrar na família</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Honra • Lealdade • Disciplina</div>
+          <h1>A presença da <span>NOVA OKAIDA</span> no RP.</h1>
+          <p>
+            Uma facção criada para quem leva o roleplay a sério. Estrutura, identidade,
+            respeito à hierarquia e uma experiência imersiva para quem quer vestir a camisa
+            e construir história dentro da cidade.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://discord.gg/WhcgtYDVj7" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Quero me alistar</a>
+            <a href="#sobre" class="btn btn-outline">Conhecer a organização</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <h3>RP Forte</h3>
+              <p>Foco em interpretação, disciplina e presença dentro da cidade.</p>
+            </div>
+            <div class="stat">
+              <h3>Elite</h3>
+              <p>Organização voltada para membros comprometidos com evolução constante.</p>
+            </div>
+            <div class="stat">
+              <h3>Família</h3>
+              <p>Lealdade interna, respeito à hierarquia e visão coletiva.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="card-tag">RECRUTAMENTO ABERTO</div>
+          <h2>Faça parte da tropa.</h2>
+          <p style="color: var(--muted);">
+            Procuramos jogadores com postura, compromisso e vontade de crescer dentro da organização.
+          </p>
+          <ul>
+            <li>✅ Respeito à liderança e aos protocolos</li>
+            <li>✅ Boa comunicação e presença em ações</li>
+            <li>✅ Compromisso com roleplay de qualidade</li>
+            <li>✅ Evolução individual e coletiva</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <span>Sobre a organização</span>
+          <h2>Uma facção construída em disciplina e identidade.</h2>
+          <p>
+            A NOVA OKAIDA representa união, estratégia e respeito. Mais do que um grupo,
+            é uma família dentro do RP, onde cada membro tem papel importante na construção
+            da reputação da organização.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>Estrutura Forte</h3>
+            <p>
+              Hierarquia organizada, funções bem definidas e processos claros para manter o grupo alinhado.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🎌</div>
+            <h3>Identidade Própria</h3>
+            <p>
+              Visual marcante, comunicação padronizada e uma cultura interna que fortalece a presença no servidor.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">📻</div>
+            <h3>Coordenação em Campo</h3>
+            <p>
+              Organização em operações, convocações e ações coletivas com foco em eficiência e imersão.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="valores">
+      <div class="container">
+        <div class="section-head">
+          <span>Nossos princípios</span>
+          <h2>O que sustenta a NOVA OKAIDA.</h2>
+          <p>
+            Cada membro carrega a responsabilidade de fortalecer o nome da organização dentro e fora das ações.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>Honra</h3>
+            <p>O nome da família vem antes do ego. Atitude, postura e respeito definem quem permanece.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Lealdade</h3>
+            <p>Confiança e compromisso entre os membros formam a base de toda operação e crescimento interno.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🔥</div>
+            <h3>Disciplina</h3>
+            <p>Presença, organização e responsabilidade são exigências para manter o padrão da organização.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo">
+      <div class="container">
+        <div class="section-head">
+          <span>Como entrar</span>
+          <h2>Processo de ingresso na família.</h2>
+          <p>
+            O recrutamento é simples, mas a permanência depende da sua postura. Aqui, compromisso pesa mais que promessa.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>01. Alistamento</strong>
+            <div>
+              <h3>Envie sua solicitação</h3>
+              <p style="color: var(--muted);">Preencha o formulário com seu nome, ID e uma breve apresentação sobre seu interesse em entrar na NOVA OKAIDA.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <strong>02. Avaliação</strong>
+            <div>
+              <h3>Análise da diretoria</h3>
+              <p style="color: var(--muted);">A liderança avalia postura, disponibilidade e alinhamento com a proposta da organização.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <strong>03. Integração</strong>
+            <div>
+              <h3>Entrada oficial</h3>
+              <p style="color: var(--muted);">Após aprovação, o novo membro recebe orientações, cargos e passa a integrar a estrutura da facção.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span>Dúvidas comuns</span>
+          <h2>Perguntas frequentes.</h2>
+          <p>Algumas respostas rápidas para quem quer conhecer melhor a organização.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Preciso ter experiência em RP para entrar?</summary>
+            <p>Não necessariamente. O mais importante é ter vontade de aprender, respeitar a hierarquia e manter uma postura correta dentro da cidade.</p>
+          </details>
+          <details>
+            <summary>A NOVA OKAIDA cobra atividade?</summary>
+            <p>Sim. Compromisso e presença são fundamentais para manter a força da organização e a qualidade do roleplay.</p>
+          </details>
+          <details>
+            <summary>Como funciona a aprovação?</summary>
+            <p>O recrutamento passa por análise da diretoria. A decisão leva em conta comportamento, perfil e alinhamento com os valores da família.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="entrar">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h3>Pronto para vestir a camisa da NOVA OKAIDA?</h3>
+            <p>
+              Entre em contato com a liderança ou direcione os interessados para o canal oficial de recrutamento.
+              Mostre sua postura e prove que você merece fazer parte da família.
+            </p>
+          </div>
+          <a href="#inicio" class="btn btn-primary">Voltar ao topo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        <strong>NOVA OKAIDA</strong><br />
+        <span>Grupo RP • Honra e Lealdade</span>
+      </div>
+      
+    </div>
+  </footer>
+</body>
+</html>
